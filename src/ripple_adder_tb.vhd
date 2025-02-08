@@ -47,10 +47,26 @@ begin
 	       assert (w_sum = x"0" and w_Cout = '0') report "bad with zeros" severity failure;
        -- Test all ones input
        w_addends <= x"FF"; w_Cin <= '1'; wait for 10 ns;
-	       assert (w_sum = x"E" and w_Cout = '1') report "bad with ones" severity failure;
+	       assert (w_sum = x"F" and w_Cout = '1') report "bad with ones" severity failure;
        -- TODO, a few other test cases
-	
+	   w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"1" and w_Cout = '0') report "bad with ones" severity failure;
+       w_addends <= x"AA"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"5" and w_Cout = '1') report "bad with ones" severity failure;
+       w_addends <= x"8A"; w_Cin <= '0'; wait for 10 ns;
+	       assert (w_sum = x"2" and w_Cout = '1') report "bad with ones" severity failure;
+       w_addends <= x"54"; w_Cin <= '0'; wait for 10 ns;
+	       assert (w_sum = x"9" and w_Cout = '0') report "bad with ones" severity failure;
+	   w_addends <= x"5C"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"2" and w_Cout = '1') report "bad with ones" severity failure;
+	   w_addends <= x"1E"; w_Cin <= '0'; wait for 10 ns;
+	       assert (w_sum = x"F" and w_Cout = '0') report "bad with ones" severity failure;
+	   w_addends <= x"64"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"B" and w_Cout = '0') report "bad with ones" severity failure;
+	   w_addends <= x"93"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"D" and w_Cout = '0') report "bad with ones" severity failure;
 		wait; -- wait forever
+	   
 	end process;	
 	-----------------------------------------------------	
 	
